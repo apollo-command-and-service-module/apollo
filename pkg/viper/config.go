@@ -25,8 +25,8 @@ repos:
   url: https://github.com/apollo-command-and-service-module/orbit.git
   branch: master
   config: config.yaml
-- name: Lunar-Module
-  url: https://github.com/apollo-command-and-service-module/orbit.git
+- name: gocd
+  url: https://github.com/gocd/gocd.git
   branch: master
   config: config.yaml
 - name: Service-Module
