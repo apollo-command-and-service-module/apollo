@@ -59,7 +59,7 @@ func (w Worker) start() {
 				job.Status = StatusRunning
 				pkg.Info("worker%d: started %s %s %s \n", w.id, job.Id, job.Status, job.Repo.Url)
 
-				//Test Data Only
+				//TODO: Since time need to come from the keystore database
 				Since := time.Date(2020, 12, 24, 11, 11, 53, 0, time.UTC)
 
 				//Clone Git Repo.
@@ -124,6 +124,7 @@ func (d *Dispatcher) Dispatch() {
 }
 
 
+//TODO: the following code is a smaple of how we can apply a REST API call to create a Job
 func RequestHandler(w http.ResponseWriter, r *http.Request, jobQueue chan Job) {
 	// Make sure we can only be called with an HTTP POST request.
 	if r.Method != "POST" {

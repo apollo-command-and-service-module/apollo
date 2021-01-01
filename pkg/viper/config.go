@@ -15,6 +15,10 @@ type Repos struct {
 	Config string
 }
 
+
+//TODO: find a location for apollo configuration / setting
+// Do we want to store the config in S3 or a github repos that we pass environment variables
+
 func Services() []Repos {
 	viper.SetConfigType("yaml") // or viper.SetConfigType("YAML")
 
@@ -23,6 +27,7 @@ func Services() []Repos {
 repos:
 - name: Command-Module
   url: https://github.com/apollo-command-and-service-module/orbit.git
+  token: auth to get into github
   branch: master
   config: config.yaml
 - name: gocd

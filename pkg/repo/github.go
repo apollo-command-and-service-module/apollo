@@ -20,6 +20,8 @@ func (x Repo) ReadIntoMemory(){
 	fs := memfs.New()
 	var hash []string
 
+	//TODO: auth to private repo
+
 	r, err := git.Clone(memory.NewStorage(), fs, &git.CloneOptions{
 		URL:        x.Url,
 		RemoteName: x.Branch,
@@ -31,6 +33,10 @@ func (x Repo) ReadIntoMemory(){
 
 	currentTime := time.Now()
 
+    // TODO: database / cache
+	// key: since
+    // value: last time git hash was pulled
+
 	cIter, err := r.Log(&git.LogOptions{From: ref.Hash(), Since: &x.Since, Until: &currentTime})
 	pkg.CheckIfError(err)
 
@@ -40,6 +46,9 @@ func (x Repo) ReadIntoMemory(){
 	})
 	pkg.CheckIfError(err)
 	pkg.Info("hash: %s\n", hash)
+	
+
+	//TODO: update keystore key: since with (Until time) current time
 
 }
 

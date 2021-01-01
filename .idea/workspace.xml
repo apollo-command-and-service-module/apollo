@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b27877fc-40e5-4272-9aad-ea5c00878bd9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/service-module/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/sync/cron.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/sync/cron.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command-module/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/command-module/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/launch-pad/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/launch-pad/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/job/job.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/job/job.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/repo/github.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/repo/github.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/viper/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/viper/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-vehicle/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/test-vehicle/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
