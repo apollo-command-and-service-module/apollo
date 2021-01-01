@@ -3,6 +3,7 @@ package sync
 import (
 	"github.com/apollo-command-and-service-module/apollo/pkg"
 	"github.com/apollo-command-and-service-module/apollo/pkg/job"
+	"github.com/apollo-command-and-service-module/apollo/pkg/logging"
 	"github.com/apollo-command-and-service-module/apollo/pkg/repo"
 	"github.com/apollo-command-and-service-module/apollo/pkg/viper"
 	"gopkg.in/robfig/cron.v2"
@@ -25,6 +26,7 @@ func AddJob(jobQueue chan job.Job){
 
 	// Read Config for Services
 	services := viper.Services()
+	logging.Info("TODO: Sync lunar-module")
 
 	for _, s := range services {
 		liftoff := pkg.FormatDate(time.Now())
