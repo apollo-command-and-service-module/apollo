@@ -1,6 +1,8 @@
 package logging
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -13,6 +15,7 @@ var (
 	infoLog    Logger
 	warningLog Logger
 	errorLog   Logger
+	buf        *bytes.Buffer
 )
 
 type Logger interface {
@@ -42,6 +45,16 @@ func (i *Warninglog) log() *log.Logger {
 
 func (i *Errorlog) log() *log.Logger {
 	return &*i.Errorlog
+}
+
+//Write method ... will write the error log to a writer.
+func (f *Errorlog) Write(p []byte) (int, error) {
+	js, err := json.MarshalIndent(f, "", "  ")
+	if err != nil {
+		return len(p), err
+	}
+	fmt.Fprintf(buf, string(js))
+	return len(p), nil
 }
 
 //Terminal Info Function (not wrapped in a logger)
