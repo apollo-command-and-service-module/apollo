@@ -3,9 +3,8 @@ package pkg
 import (
 	"fmt"
 	"log"
-	"os"
-	"time"
 	"math/rand"
+	"time"
 )
 
 func IdGenerator() string {
@@ -36,13 +35,13 @@ func ConvertUTC(strDate string) time.Time {
 }
 
 // CheckIfError should be used to naively panics if an error is not nil.
-func CheckIfError(err error) {
+func CheckIfError(err error, worker int, jobId string) {
 	if err == nil {
 		return
 	}
 
-	fmt.Printf("\x1b[31;1m%s\x1b[0m\n", fmt.Sprintf("error: %s", err))
-	os.Exit(1)
+	fmt.Printf("\x1b[31;1m%s\x1b[0m\n", fmt.Sprintf("worker%d: ID: %s error %s", worker, jobId, err))
+	return
 }
 
 // Info should be used to describe the example commands that are about to run.

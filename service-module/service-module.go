@@ -1,14 +1,14 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"github.com/apollo-command-and-service-module/apollo/pkg"
 	"github.com/apollo-command-and-service-module/apollo/pkg/job"
 	cron "github.com/apollo-command-and-service-module/apollo/pkg/sync"
-	"flag"
-	"fmt"
+	"github.com/gorilla/websocket"
 	"log"
 	"net/http"
-	"github.com/gorilla/websocket"
 	"time"
 )
 
@@ -70,8 +70,7 @@ func setupRoutes() {
 	http.HandleFunc("/ws", serveWs)
 }
 
-
-func main(){
+func main() {
 	var (
 		maxWorkers   = flag.Int("max_workers", 5, "The number of workers to start")
 		maxQueueSize = flag.Int("max_queue_size", 10, "The size of job queue")
@@ -100,4 +99,3 @@ func main(){
 	log.Fatal(http.ListenAndServe(":"+*port, nil))
 
 }
-
