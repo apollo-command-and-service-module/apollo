@@ -112,6 +112,23 @@ func (l *Logger) Info() *zerolog.Event {
 	return l.logger.Info()
 }
 
+//PrintInfo is a shortcut to printing out errors regardless of whether
+//debug level is set to true or false.
+//The usual way with zerolog for command chaining for errors and info is as follows:
+//log.Info().Msg(). Furthermore, the default .Msg() does not take an interface as an
+//argument. So type error messages can be passed to below.
+//So below allows for printing errors without the need to chain if debug is disabled
+func (l *Logger) PrintInfo(v ...interface{}) {
+	e := l.Info()
+	e.Msg(fmt.Sprint(v...))
+}
+
+//PrintInfof see comment for above
+func (l *Logger) PrintInfof(format string, v ...interface{}) {
+	e := l.Info()
+	e.Msgf(format, v...)
+}
+
 // Warn starts a new message with warn level.
 //
 // You must call Msg on the returned event in order to send the event.
@@ -119,11 +136,35 @@ func (l *Logger) Warn() *zerolog.Event {
 	return l.logger.Warn()
 }
 
+//PrintWarn ... see comment for PrintInfo
+func (l *Logger) PrintWarn(v ...interface{}) {
+	e := l.Warn()
+	e.Msg(fmt.Sprint(v...))
+}
+
+//PrintWarnF see comment for above
+func (l *Logger) PrintWarnF(format string, v ...interface{}) {
+	e := l.Warn()
+	e.Msgf(format, v...)
+}
+
 // Error starts a new message with error level.
 //
 // You must call Msg on the returned event in order to send the event.
 func (l *Logger) Error() *zerolog.Event {
 	return l.logger.Error()
+}
+
+//PrintError see comment for PrintInfo
+func (l *Logger) PrintError(v ...interface{}) {
+	e := l.Error()
+	e.Msg(fmt.Sprint(v...))
+}
+
+//PrintErrorf see comment for PrintInfo
+func (l *Logger) PrintErrorf(format string, v ...interface{}) {
+	e := l.Error()
+	e.Msgf(format, v...)
 }
 
 // Fatal starts a new message with fatal level. The os.Exit(1) function

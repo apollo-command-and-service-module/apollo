@@ -11,6 +11,6 @@ func CheckIfError(err error) {
 	}
 	//TODO: Do we want os.Exit(1), this will kill the service.
 	log := NewConsole(true)
-	log.Info().Msg("Error occurred")
+	log.PrintErrorf("An error occurred: %s", err)
 	os.Exit(1)
 }
