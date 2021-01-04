@@ -3,9 +3,9 @@ package pkg
 import (
 	"fmt"
 	"log"
+	"math/rand"
 	"os"
 	"time"
-	"math/rand"
 )
 
 func IdGenerator() string {
