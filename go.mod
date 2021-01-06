@@ -1,6 +1,6 @@
 module github.com/apollo-command-and-service-module/apollo
 
-go 1.14
+go 1.15
 
 require (
 	github.com/go-git/go-billy/v5 v5.0.0
