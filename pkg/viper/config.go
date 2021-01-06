@@ -23,15 +23,15 @@ func Services() []Repos {
 repos:
 - name: public
   url: https://github.com/apollo-command-and-service-module/orbit.git
-  branch: master
+  branch: main
   config: config.yaml
 - name: private
   url: https://github.com/apollo-command-and-service-module/apollo.git
-  branch: master
+  branch: main
   config: config.yaml
 - name: qa-environment
   url: https://github.com/apollo-command-and-service-module/orbit.git
-  branch: master
+  branch: qa
   config: config.yaml
 `)
 
