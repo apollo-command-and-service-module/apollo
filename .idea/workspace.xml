@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b27877fc-40e5-4272-9aad-ea5c00878bd9" name="Default Changelist" comment="">
+    <list default="true" id="b27877fc-40e5-4272-9aad-ea5c00878bd9" name="Default Changelist" comment="Updated the PR to correct conflicting files">
+      <change afterPath="$PROJECT_DIR$/launch-pad/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/job/job.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/job/job.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/logging/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/logging/errors.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/logging/logging.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/logging/logging.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/repo/github.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/repo/github.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/sync/cron.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/sync/cron.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/viper/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/viper/config.go" afterDir="false" />
     </list>
@@ -13,31 +19,86 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
   <component name="GOROOT" url="file:///usr/local/Cellar/go/1.14.2_1/libexec" />
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1mMObjAWQlmwd7Ds1uD3yIL7f7u" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
-    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
+    <property name="configurable..is.expanded" value="false" />
+    <property name="configurable.GoLibrariesConfigurable.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
+  </component>
+  <component name="RunManager">
+    <configuration name="go build github.com/apollo-command-and-service-module/apollo/service-module" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
+      <module name="apollo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <envs>
+        <env name="GITHUB_TOKEN" value="2c96cee4dc7c88a7b466f89366be8d8494ccdeea" />
+        <env name="GITHUB_USER" value="bldmgr" />
+        <env name="BAD_TOKEN" value="7874287823782" />
+      </envs>
+      <kind value="DIRECTORY" />
+      <filePath value="$PROJECT_DIR$" />
+      <package value="github.com/apollo-command-and-service-module/Apollo" />
+      <directory value="$PROJECT_DIR$/service-module" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Poll Private GitHub Repository" />
+    <MESSAGE value="Updated the PR to correct conflicting files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the PR to correct conflicting files" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+    <environment>
+      <map>
+        <entry key="GO111MODULE" value="on" />
+      </map>
+    </environment>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/../../../../pkg/mod/github.com/go-git/go-git/v5@v5.2.0/plumbing/transport/client/example_test.go</url>
+          <line>2</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

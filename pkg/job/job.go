@@ -1,8 +1,9 @@
 package job
 
 import (
-	"github.com/apollo-command-and-service-module/apollo/pkg"
+	"fmt"
 	"github.com/apollo-command-and-service-module/apollo/pkg/repo"
+	"log"
 	"net/http"
 	"time"
 )
@@ -10,10 +11,8 @@ import (
 type StatusString string
 
 const (
-	StatusQueued    StatusString = "queued"
-	StatusRunning   StatusString = "running"
-	StatusFailed    StatusString = "failed"
-	StatusSucceeded StatusString = "succeeded"
+	StatusQueued  StatusString = "queued"
+	StatusRunning StatusString = "running"
 )
 
 type Status struct {
@@ -47,7 +46,6 @@ type Worker struct {
 	status     StatusString
 }
 
-
 func (w Worker) start() {
 	go func() {
 		for {
@@ -57,20 +55,21 @@ func (w Worker) start() {
 			case job := <-w.jobQueue:
 				// Start job
 				job.Status = StatusRunning
-				pkg.Info("worker%d: started %s %s %s \n", w.id, job.Id, job.Status, job.Repo.Url)
+
+				//TODO: How we should log this action
+				log.Print(fmt.Sprintf("worker%d: ID:%s started %s %s \n", w.id, job.Id, job.Status, job.Repo.Url))
 
 				//Test Data Only
-				Since := time.Date(2020, 12, 24, 11, 11, 53, 0, time.UTC)
+				Since := time.Date(2021, 01, 05, 11, 11, 53, 0, time.UTC)
 
 				//Clone Git Repo.
-				clone := repo.NewClone(job.Repo.Url,job.Repo.Branch,job.Repo.ConfigFile, Since)
-				clone.ReadIntoMemory()
+				clone := repo.NewClone(job.Repo.Url, job.Repo.Branch, job.Repo.ConfigFile, Since)
+				clone.ReadIntoMemory(w.id, job.Id)
 
-				job.Status = StatusSucceeded
-				pkg.Info("worker%d: %s %s\n", w.id, job.Id, job.Status)
 			case <-w.quitChan:
 				//stop worker.
-				pkg.Info("worker%d stopping\n", w.id)
+				//TODO: How we should log this action
+				log.Print(fmt.Sprintf("worker%d stopping\n", w.id))
 				return
 			}
 		}
@@ -115,14 +114,16 @@ func (d *Dispatcher) Dispatch() {
 			go func() {
 				// Create workers Job Queue
 				workerJobQueue := <-d.workerPool
-				pkg.Info("%s : %s   ID:%s\n", job.Status, job.Name, job.Id)
+
+				//TODO: How we should log this action
+				log.Print(fmt.Sprintf("%s : ID:%s adding configuration %s\n", job.Status, job.Id, job.Name))
+
 				//Dispatch a job to the Workers Job Queue
 				workerJobQueue <- job
 			}()
 		}
 	}
 }
-
 
 func RequestHandler(w http.ResponseWriter, r *http.Request, jobQueue chan Job) {
 	// Make sure we can only be called with an HTTP POST request.
