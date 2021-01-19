@@ -26,5 +26,5 @@ func ExampleGetCache() {
 	}
 	fmt.Println(c.Title)
 
-	//Output redis genesis
+	// Output: redis genesis
 }
