@@ -28,6 +28,12 @@ func init() {
 		},
 	}
 
+}
+
+//Genesis is used for populating the Redis cache on first run
+//TODO: we should consider whether this should be exported. For now leaving as exported, but perhaps
+//needs to be moved to our API as a maintenace option.
+func Genesis() error {
 	since := &Since{
 		Job:   job,
 		Title: "redis genesis",
@@ -35,12 +41,17 @@ func init() {
 	}
 	conn := pool.Get()
 	defer conn.Close()
+
+	log := logging.NewConsole(true)
+
 	jobNumber := strconv.Itoa(since.Job)
 	_, err := conn.Do("HSET", "job:"+jobNumber, "title", since.Title, "time", since.Time)
 	if err != nil {
-		log := logging.NewConsole(true)
 		log.PrintErrorf("An error occurred: %s", err)
+		return err
 	}
+
+	return nil
 }
 
 func GetCache(job int) (*Since, error) {
