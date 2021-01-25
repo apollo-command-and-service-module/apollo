@@ -14,6 +14,8 @@ import (
 
 var scheduler cron.Cron
 
+
+//AGC Configuration setting
 type Config struct {
 	Source        string
 	Directory     string

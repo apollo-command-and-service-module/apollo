@@ -24,19 +24,15 @@ type Repo struct {
 
 func CleanDiskStorage(directory string) (error, error) {
 	d, err := os.Open(directory)
-	if err != nil {
-		return err, nil
-	}
+	logging.CheckIfError(err)
+
 	defer d.Close()
 	names, err := d.Readdirnames(-1)
-	if err != nil {
-		return err, nil
-	}
+	logging.CheckIfError(err)
+
 	for _, name := range names {
 		err = os.RemoveAll(filepath.Join(directory, name))
-		if err != nil {
-			return err, nil
-		}
+		logging.CheckIfError(err)
 	}
 	return nil, nil
 }
@@ -100,35 +96,32 @@ func (x Repo) ReadIntoMemory(worker int, jobId string) {
 		Auth:          &http.BasicAuth{user, token},
 		SingleBranch:  true,
 	})
-	if err != nil {
-		//TODO: log this action
-		log.Print(fmt.Sprintf("worker%d: ID: %s error %s", worker, jobId, err))
-	} else {
+	logging.CheckIfError(err)
 
-		w, err := r.Worktree()
-		//TODO: check for error log but don't exit
-		logging.CheckIfError(err)
+	w, err := r.Worktree()
+	//TODO: check for error log but don't exit
+	logging.CheckIfError(err)
 
-		err = w.Checkout(&git.CheckoutOptions{
-			Branch: plumbing.ReferenceName(x.Branch),
-		})
+	err = w.Checkout(&git.CheckoutOptions{
+		Branch: plumbing.ReferenceName(x.Branch),
+	})
 
-		ref, err := r.Head()
-		//TODO: check for error log but don't exit
-		logging.CheckIfError(err)
+	ref, err := r.Head()
+	//TODO: check for error log but don't exit
+	logging.CheckIfError(err)
 
-		currentTime := time.Now()
+	currentTime := time.Now()
 
-		cIter, err := r.Log(&git.LogOptions{From: ref.Hash(), Since: &x.Since, Until: &currentTime})
-		//TODO: log this action
-		logging.CheckIfError(err)
-		err = cIter.ForEach(func(c *object.Commit) error {
-			hash = append(hash, c.Hash.String())
-			return nil
-		})
-		//TODO: log this action
-		log.Print(fmt.Sprintf("worker%d: ID:%s returned hash %s \n", worker, jobId, hash))
-	}
+	cIter, err := r.Log(&git.LogOptions{From: ref.Hash(), Since: &x.Since, Until: &currentTime})
+	//TODO: log this action
+	logging.CheckIfError(err)
+	err = cIter.ForEach(func(c *object.Commit) error {
+		hash = append(hash, c.Hash.String())
+		return nil
+	})
+	//TODO: log this action
+	log.Print(fmt.Sprintf("worker%d: ID:%s returned hash %s \n", worker, jobId, hash))
+
 }
 
 func NewClone(url string, branch string, configFile string, since time.Time) *Repo {
