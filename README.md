@@ -1,7 +1,7 @@
 # Apollo
-Apollo is an open source initiative that automatically sync an ECS cluster's state matches to the config in GitHub using GitOps. 
+Apollo is an open source initiative that automatically sync an ECS cluster's state to the config in GitHub using GitOps. 
 
-Its a next-generation continuous delivery tool for deployments inside ECS, which means you don't need a separate continuous delivery tool. It monitors all relevant image repositories, detects new images, triggers deployments and updates the desired running configuration based on the task config.
+Its a next-generation continuous delivery tool for deployments inside ECS, which means you don't need a separate continuous delivery tool. It monitors all relevant GitHub repositories, detects new commits, triggers deployments and updates the desired running configuration.
 
 The benefits are:
 - You don't need to grant your continuous integration tool access to the ECS cluster.
@@ -35,6 +35,46 @@ Maintainer
 
 Our contributions guidelines
 ----------------
+
+Developer Notes
+----------------
+
+- default setting are located in service-module/service-module.go
+
+GoLang
+```
+go run ./service-module/service-module.go
+```
+
+Docker
+```
+docker build -t sm . && docker run sm 
+```
+
+
+**Basic Auth**
+````
+export GITHUB_TOKEN=<github personal access tokens>
+export GITHUB_USER=<github user>
+````
+
+#### The Apollo Guidance Configuration file
+The AGC file is require and contains the source of each service repositories
+
+```
+repos:
+- name: service-name
+  url: https://github.com/apollo-command-and-service-module/orbit.git
+  branch: main
+  config: config.yaml
+```
+
+override local path and configuration file
+````
+export AGC_PATH=./agc
+export AGC_FILE=agc.yaml
+````
+
 
 Build documentation
 ----------------

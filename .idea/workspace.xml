@@ -2,17 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b27877fc-40e5-4272-9aad-ea5c00878bd9" name="Default Changelist" comment="Updated the PR to correct conflicting files">
-      <change afterPath="$PROJECT_DIR$/launch-pad/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/repo/github_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/job/job.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/job/job.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/logging/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/logging/errors.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/logging/logging.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/logging/logging.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/repo/github.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/repo/github.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/sync/cron.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/sync/cron.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/viper/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/viper/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-module/service-module.go" beforeDir="false" afterPath="$PROJECT_DIR$/service-module/service-module.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +26,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" url="file:///usr/local/Cellar/go/1.14.2_1/libexec" />
+  <component name="GOROOT" url="file:///usr/local/Cellar/go/1.15.6/libexec" />
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -54,9 +54,19 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$" />
-    <property name="settings.editor.selected.configurable" value="go.vgo" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Build.go build github.com/apollo-command-and-service-module/apollo/service-module">
+    <configuration name="No Env" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="apollo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="DIRECTORY" />
+      <filePath value="$PROJECT_DIR$" />
+      <package value="github.com/apollo-command-and-service-module/Apollo" />
+      <directory value="$PROJECT_DIR$/service-module" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build github.com/apollo-command-and-service-module/apollo/service-module" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
       <module name="apollo" />
       <working_directory value="$PROJECT_DIR$" />
@@ -65,6 +75,8 @@
         <env name="GITHUB_TOKEN" value="2c96cee4dc7c88a7b466f89366be8d8494ccdeea" />
         <env name="GITHUB_USER" value="bldmgr" />
         <env name="BAD_TOKEN" value="7874287823782" />
+        <env name="AGC_PATH" value="$USER_HOME$/tagc/" />
+        <env name="AGC_FILE" value="tagc" />
       </envs>
       <kind value="DIRECTORY" />
       <filePath value="$PROJECT_DIR$" />
@@ -72,12 +84,51 @@
       <directory value="$PROJECT_DIR$/service-module" />
       <method v="2" />
     </configuration>
+    <configuration name="TestNewClone in github.com/apollo-command-and-service-module/apollo/pkg/repo" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="apollo" />
+      <working_directory value="$PROJECT_DIR$/pkg/repo" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/apollo-command-and-service-module/apollo/pkg/repo" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestNewClone\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="sm" />
+          <option name="buildCliOptions" value="" />
+          <option name="command" value="" />
+          <option name="containerName" value="" />
+          <option name="entrypoint" value="" />
+          <option name="commandLineOptions" value="" />
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.Dockerfile" />
+      <item itemvalue="Go Build.go build github.com/apollo-command-and-service-module/apollo/service-module" />
+      <item itemvalue="Go Build.No Env" />
+      <item itemvalue="Go Test.TestNewClone in github.com/apollo-command-and-service-module/apollo/pkg/repo" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.TestNewClone in github.com/apollo-command-and-service-module/apollo/pkg/repo" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/launch-pad/orbit" />
+    </ignored-roots>
     <MESSAGE value="Poll Private GitHub Repository" />
     <MESSAGE value="Updated the PR to correct conflicting files" />
     <option name="LAST_COMMIT_MESSAGE" value="Updated the PR to correct conflicting files" />
@@ -100,5 +151,8 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Apollo$TestNewClone_in_github_com_apollo_command_and_service_module_apollo_pkg_repo.out" NAME="TestNewClone in github.com/apollo-command-and-service-module/apollo/pkg/repo Coverage Results" MODIFIED="1611011265504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

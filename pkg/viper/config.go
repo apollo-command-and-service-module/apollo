@@ -2,49 +2,51 @@ package viper
 
 import "C"
 import (
-	"bytes"
+	"log"
 	"github.com/apollo-command-and-service-module/apollo/pkg"
 	"github.com/spf13/viper"
 	"time"
 )
 
-type Repos struct {
+type AgcConfig struct {
 	Name   string
 	Url    string
 	Branch string
 	Config string
 }
 
-func Services() []Repos {
-	viper.SetConfigType("yaml") // or viper.SetConfigType("YAML")
+type Agc struct {
+	//Apollo Guidance Configuration
+	FileName string
+	Directory string
+}
 
-	// Apollo setting configurations
-	var yamlExample = []byte(`
-repos:
-- name: public
-  url: https://github.com/apollo-command-and-service-module/orbit.git
-  branch: main
-  config: config.yaml
-- name: private
-  url: https://github.com/apollo-command-and-service-module/apollo.git
-  branch: main
-  config: config.yaml
-- name: qa-environment
-  url: https://github.com/apollo-command-and-service-module/orbit.git
-  branch: qa
-  config: config.yaml
-`)
+func (a *Agc) Services() []AgcConfig {
+	viper.SetConfigType("yaml")
 
-	viper.ReadConfig(bytes.NewBuffer(yamlExample))
+	viper.SetConfigName(a.FileName)
+	viper.AddConfigPath(a.Directory)
 
-	var services []Repos
+	if err := viper.ReadInConfig(); err != nil {
+		log.Printf("Error reading the Apollo Guidance Configuration %s", err)
+	}
+
+	var services []AgcConfig
 	err := viper.UnmarshalKey("repos", &services)
 	if err != nil {
 		panic("Unable to unmarshal hosts")
 	}
 
 	liftoff := pkg.FormatDate(time.Now())
-	pkg.Info("LIFT-OFF: %s\n", liftoff)
+	log.Printf("LIFT-OFF: %s\n", liftoff)
 
 	return services
+}
+
+func SetAgc(fileName string, directory string) *Agc {
+
+	return &Agc{
+		FileName:      fileName,
+		Directory:     directory,
+	}
 }

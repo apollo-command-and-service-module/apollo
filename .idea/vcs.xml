@@ -2,6 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/launch-pad/orbit" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/agc" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/apollo_config" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/apollo_control" vcs="Git" />
   </component>
 </project>
