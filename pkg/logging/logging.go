@@ -171,9 +171,19 @@ func (l *Logger) PrintErrorf(format string, v ...interface{}) {
 // is called by the Msg method.
 //
 // You must call Msg on the returned event in order to send the event.
-func (l *Logger) Fatal() *zerolog.Event {
+func (l *Logger) Fatal(v ...interface{}) *zerolog.Event {
+	e := l.Fatal()
+	e.Msg(fmt.Sprint(v...))
 	return l.logger.Fatal()
 }
+
+// PrintFatal will print the error message out. Zerolog doesn't by default
+// include a print argument to its Fatal function
+// func (l *Logger) PrintFatal(v ...interface{}) *zerolog.Event {
+// 	e := l.Fatal()
+// 	e.Msg(fmt.Sprint(v...))
+// 	return l.logger.Fatal()
+// }
 
 // Panic starts a new message with panic level. The message is also sent
 // to the panic function.
