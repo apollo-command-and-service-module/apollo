@@ -171,7 +171,9 @@ func (l *Logger) PrintErrorf(format string, v ...interface{}) {
 // is called by the Msg method.
 //
 // You must call Msg on the returned event in order to send the event.
-func (l *Logger) Fatal() *zerolog.Event {
+func (l *Logger) Fatal(v ...interface{}) *zerolog.Event {
+	e := l.Fatal()
+	e.Msg(fmt.Sprint(v...))
 	return l.logger.Fatal()
 }
 
