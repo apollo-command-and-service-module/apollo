@@ -15,7 +15,9 @@ type Logger struct {
 	logger *zerolog.Logger
 }
 
-func New(isDebug bool) *Logger {
+//New will instantiate a new instance of *Logger. Use this if printing logs
+//to JSON outputs.
+func New(output io.Writer, isDebug bool) *Logger {
 	logLevel := zerolog.InfoLevel
 	if isDebug {
 		logLevel = zerolog.DebugLevel
@@ -23,11 +25,13 @@ func New(isDebug bool) *Logger {
 
 	zerolog.SetGlobalLevel(logLevel)
 	//output := zerolog.ConsoleWriter{Out: os.Stdout, TimeFormat: time.RFC3339}
-	logger := zerolog.New(os.Stdout).With().Timestamp().Logger()
-
+	logger := zerolog.New(output).With().Timestamp().Logger()
 	return &Logger{logger: &logger}
+
 }
 
+//NewConsole is similar to new but will print to os.Stdout by default with
+//terminal formatting.
 func NewConsole(isDebug bool) *Logger {
 
 	logLevel := zerolog.InfoLevel
@@ -112,19 +116,19 @@ func (l *Logger) Info() *zerolog.Event {
 	return l.logger.Info()
 }
 
-//PrintInfo is a shortcut to printing out errors regardless of whether
+//Infoprint is a shortcut to printing out errors regardless of whether
 //debug level is set to true or false.
 //The usual way with zerolog for command chaining for errors and info is as follows:
 //log.Info().Msg(). Furthermore, the default .Msg() does not take an interface as an
 //argument. So type error messages can be passed to below.
 //So below allows for printing errors without the need to chain if debug is disabled
-func (l *Logger) PrintInfo(v ...interface{}) {
+func (l *Logger) Infoprint(v ...interface{}) {
 	e := l.Info()
 	e.Msg(fmt.Sprint(v...))
 }
 
-//PrintInfof see comment for above
-func (l *Logger) PrintInfof(format string, v ...interface{}) {
+//Infoprintf see comment for above
+func (l *Logger) Infoprintf(format string, v ...interface{}) {
 	e := l.Info()
 	e.Msgf(format, v...)
 }
@@ -169,12 +173,20 @@ func (l *Logger) PrintErrorf(format string, v ...interface{}) {
 
 // Fatal starts a new message with fatal level. The os.Exit(1) function
 // is called by the Msg method.
-//
-// You must call Msg on the returned event in order to send the event.
-func (l *Logger) Fatal(v ...interface{}) *zerolog.Event {
+func (l *Logger) Fatal() *zerolog.Event {
+	return l.logger.Fatal()
+}
+
+//PrintFatal calls Fatal with os.Exit(1) and prints the error
+func (l *Logger) PrintFatal(v ...interface{}) {
 	e := l.Fatal()
 	e.Msg(fmt.Sprint(v...))
-	return l.logger.Fatal()
+}
+
+//PrintFatalf calls Fatal with os.Exit(1) and prints the error
+func (l *Logger) PrintFatalf(format string, v ...interface{}) {
+	e := l.Fatal()
+	e.Msgf(format, v...)
 }
 
 // Panic starts a new message with panic level. The message is also sent
