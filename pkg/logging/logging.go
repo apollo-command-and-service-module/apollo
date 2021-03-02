@@ -116,19 +116,19 @@ func (l *Logger) Info() *zerolog.Event {
 	return l.logger.Info()
 }
 
-//Infoprint is a shortcut to printing out errors regardless of whether
+//PrintInfo is a shortcut to printing out errors regardless of whether
 //debug level is set to true or false.
 //The usual way with zerolog for command chaining for errors and info is as follows:
 //log.Info().Msg(). Furthermore, the default .Msg() does not take an interface as an
 //argument. So type error messages can be passed to below.
 //So below allows for printing errors without the need to chain if debug is disabled
-func (l *Logger) Infoprint(v ...interface{}) {
+func (l *Logger) PrintInfo(v ...interface{}) {
 	e := l.Info()
 	e.Msg(fmt.Sprint(v...))
 }
 
-//Infoprintf see comment for above
-func (l *Logger) Infoprintf(format string, v ...interface{}) {
+//PrintInfof see comment for above
+func (l *Logger) PrintInfof(format string, v ...interface{}) {
 	e := l.Info()
 	e.Msgf(format, v...)
 }
