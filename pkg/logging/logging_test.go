@@ -3,6 +3,8 @@ package logging_test
 import (
 	"errors"
 	"flag"
+	"io"
+	"os"
 	"time"
 
 	logger "github.com/apollo-command-and-service-module/apollo/pkg/logging"
@@ -10,14 +12,15 @@ import (
 )
 
 func setup(deBug bool) *logger.Logger {
-
+	var w io.Writer
+	w = os.Stdout
 	zerolog.TimeFieldFormat = ""
 
 	zerolog.TimestampFunc = func() time.Time {
 		return time.Date(2008, 1, 8, 17, 5, 05, 0, time.UTC)
 	}
 
-	return logger.New(deBug)
+	return logger.New(w, deBug)
 }
 
 func ExamplePrint() {
